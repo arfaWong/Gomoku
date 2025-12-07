@@ -66,16 +66,16 @@ const checkWin = (
     }
     
     if (positions.length >= 5) {
-      // Sort positions to get start and end
-      positions.sort((a, b) => {
-        if (a.row !== b.row) return a.row - b.row;
-        return a.col - b.col;
-      });
+      // positions array is already in order from the search algorithm
+      // First element is from negative direction search (unshift)
+      // Last element is from positive direction search (push)
+      // Take only the first 5 positions for the win line
+      const winPositions = positions.slice(0, 5);
       
       return {
-        start: positions[0],
-        end: positions[positions.length - 1],
-        positions: positions.slice(0, 5),
+        start: winPositions[0],
+        end: winPositions[winPositions.length - 1],
+        positions: winPositions,
       };
     }
   }

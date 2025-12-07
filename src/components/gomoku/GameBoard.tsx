@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { GameState, Position, BOARD_SIZE } from '@/types/gomoku';
 import { BoardCell } from './BoardCell';
-import { WinLineOverlay } from './WinLineOverlay';
 
 interface GameBoardProps {
   gameState: GameState;
@@ -103,15 +102,7 @@ export const GameBoard = ({
         ))}
       </svg>
 
-      {/* Win line overlay */}
-      {gameState.winLine && (
-        <WinLineOverlay
-          winLine={gameState.winLine}
-          cellSize={cellSize}
-          boardPadding={boardPadding}
-          totalSize={totalSize}
-        />
-      )}
+
 
       {/* Cells - rendered directly on board */}
       {Array.from({ length: BOARD_SIZE }).map((_, row) =>
